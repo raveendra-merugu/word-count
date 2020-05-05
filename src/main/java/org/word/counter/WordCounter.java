@@ -19,7 +19,7 @@ public class WordCounter {
 
     public WordCounter(Translator translator) {
         this.wordCounterMap = new HashMap<>();
-        this.translator=translator;
+        this.translator = translator;
     }
 
     /**
@@ -32,7 +32,7 @@ public class WordCounter {
         int count = 0;
         if (canAdd(word)) {
             Locale aDefault = Locale.getDefault();
-            word = translator.translate(aDefault,word);
+            word = translator.translate(aDefault, word);
             if (wordCounterMap.containsKey(word)) {
                 count = wordCounterMap.get(word) + 1;
             } else {
@@ -45,7 +45,7 @@ public class WordCounter {
 
     protected boolean canAdd(String word) {
 
-        return !PATTERN.matcher(word).find();
+        return (word != null && word.length() > 0) && !PATTERN.matcher(word).find();
 
     }
 }

@@ -12,6 +12,18 @@ public class WordCounterTest {
 
     public static final Locale SPANISH = new Locale("es", "ES");
 
+
+    @Test
+    public void checkForEmptyWord() {
+        Translator mock = getMockTranslator();
+        WordCounter wordCounter = new WordCounter(mock);
+        int actualCount = wordCounter.addWord("");
+        Assert.assertEquals("Check count when a new word is added", actualCount, 0);
+         actualCount = wordCounter.addWord(null);
+        Assert.assertEquals("Check count when a new word is added", actualCount, 0);
+    }
+
+
     @Test
     public void addWord() {
         Translator mock = getMockTranslator();
