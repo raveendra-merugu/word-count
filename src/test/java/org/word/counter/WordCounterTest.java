@@ -74,10 +74,12 @@ public class WordCounterTest {
     @Test
     public void canAdd() {
         WordCounter wordCounter = new WordCounter(getMockTranslator());
-        int actualCount = wordCounter.addWord("flor_");
-        Assert.assertEquals("Check count when adding an invalid value", 0, actualCount);
-        actualCount = wordCounter.addWord("florqw@");
-        Assert.assertEquals("Check count when adding an invalid value", 0, actualCount);
+        boolean canAdd = wordCounter.canAdd("flor_");
+        Assert.assertFalse("Checking for validity of the word", canAdd);
+        canAdd = wordCounter.canAdd("florqw@");
+        Assert.assertFalse("Checking for validity of the word", canAdd);
+        canAdd = wordCounter.canAdd("flower");
+        Assert.assertTrue("Checking for validity of the word", canAdd);
 
 
     }
